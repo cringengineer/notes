@@ -1,0 +1,73 @@
+@mixin textParams($size,$weight) {
+  font-size: $size;
+  color: black;
+  font-weight: $weight;
+  text-align: center;
+  margin-left: 5px;
+  width: 95%;
+  margin-right: 5px;
+}
+
+.text__container {
+  word-wrap: break-word;
+  margin: 0 auto;
+}
+
+.note__container {
+  height: 20em;
+  width: 20em;
+  background-color: pink;
+  margin-right: 30px;
+  margin-left: 30px;
+  overflow: hidden;
+  margin-top: 30px;
+}
+
+.note__container img {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  top: 15px;
+  left: 15px;
+  cursor: pointer;
+}
+
+.cross {
+  position: relative;
+  top: -15px;
+  left: 300px;
+  cursor: pointer;
+}
+
+.cross:before, .cross:after {
+  content: '';
+  width: 2px;
+  height: 25px;
+  background-color: #444141;
+  opacity: .8;
+  position: absolute;
+  transition: 1s;
+}
+
+.cross:before {
+  transform: rotate(45deg);
+}
+
+.cross:after {
+  transform: rotate(-45deg);
+}
+.text__container input {
+  width: 90%;
+  height: 3em;
+  margin-left: 10px;
+  outline: none;
+  box-shadow: none;
+  border: 1px solid black;
+}
+.title {
+  @include textParams(1.5rem, 500)
+}
+
+.text {
+  @include textParams(1rem, 400)
+}
