@@ -1,7 +1,8 @@
 import React, {FC, useState} from 'react';
 import style from './Note.module.scss';
 import {dataType} from "../../types";
-
+import pencil from './../../icons/pencil.png';
+import ok from './../../icons/390973.png'
 interface noteProps {
     id: number,
     text: string,
@@ -12,7 +13,7 @@ interface noteProps {
     hashTags:string[]
 }
 
-const Note: FC<noteProps> = ({id, text, title, db, setDB,setHashTags,hashTags}) => {
+const Note: FC<noteProps> = ({id, text, title, db, setDB,setHashTags}) => {
     const [edited, setEdit] = useState(false);
 
     const removeNote = (id: number) => {
@@ -47,7 +48,7 @@ const Note: FC<noteProps> = ({id, text, title, db, setDB,setHashTags,hashTags}) 
     }*/
     const onFinishEditing = () => {
         db.filter(item => {
-            if (item.id == id) {
+            if (item.id === id) {
                 item.text = note.text
             }
         });
@@ -58,9 +59,9 @@ const Note: FC<noteProps> = ({id, text, title, db, setDB,setHashTags,hashTags}) 
     return (
         <div className={style.note__container}>
             {edited ? <img alt={'end editing'} onClick={() => onFinishEditing()}
-                           src={'https://cdn-icons-png.flaticon.com/512/390/390973.png'}></img> :
+                           src={ok}></img> :
                 <img onClick={() => setEdit(!edited)} alt={'edit'}
-                     src={'https://cdn.icon-icons.com/icons2/523/PNG/512/edit_icon-icons.com_52382.png'}></img>}
+                     src={pencil}></img>}
             <div onClick={() => removeNote(id)} className={style.cross}></div>
             <div className={style.text__container}>
                 <p className={style.title}>{title}</p>
